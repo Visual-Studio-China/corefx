@@ -1,4 +1,4 @@
-clone_folder: c:\projects\azure-sdk-for-net
+clone_folder: c:\projects\nothing
 
 environment:
   access_token:
@@ -13,6 +13,7 @@ before_build:
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "vscopbld@microsoft.com"
   - git config --global user.name "OpenPublishBuild"
+  - git clone -q --branch=master https://github.com/dotnet/corefx.git corefx
   - git clone -q --branch=master https://github.com/dotnet/coreclr.git  coreclr
   - git clone -q --branch=master https://github.com/dotnet/wcf.git wcf
   - git clone -q --branch=master https://github.com/Visual-Studio-China/core-docs.git coredocs
