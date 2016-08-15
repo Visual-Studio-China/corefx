@@ -22,9 +22,4 @@ before_build:
   - xcopy /ey coredocs-ci\** .\
 
 build_script:
-  - build-metadata.cmd -docfxExeUrl "https://github.com/dotnet/docfx/releases/download/v2.3/docfx.zip"
-
-on_success:
-  - git add .
-  - git commit -m "CI Updates"
-  - git push origin master
+  - build-metadata.cmd
