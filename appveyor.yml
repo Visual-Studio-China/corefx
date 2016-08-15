@@ -13,13 +13,16 @@ before_build:
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "vscopbld@microsoft.com"
   - git config --global user.name "OpenPublishBuild"
-  - git clone -q --branch=master https://github.com/dotnet/coreclr.git
-  - git clone -q --branch=master https://github.com/Visual-Studio-China/core-docs.git
-  - cd core-docs
-  
+  - git clone -q --branch=master https://github.com/dotnet/coreclr.git  coreclr
+  - git clone -q --branch=master https://github.com/dotnet/wcf.git wcf
+  - git clone -q --branch=master https://github.com/Visual-Studio-China/core-docs.git coredocs
+  - git clone -q --branch=master https://github.com/docascode/coredocs-ci.git coredocs-ci
+  - git clone -q --branch=master https://github.com/docascode/intellisense.git intellisense
+  - xcopy /ey coredocs-ci\** .\
+
 build_script:
-  - docfx metadata
-  
+  - build-metadata.cmd -docfxExeUrl "https://github.com/dotnet/docfx/releases/download/v2.3/docfx.zip"
+
 on_success:
   - git add .
   - git commit -m "CI Updates"
