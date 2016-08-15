@@ -17,7 +17,7 @@ before_build:
   - git clone -q --branch=master https://github.com/dotnet/coreclr.git  coreclr
   - git clone -q --branch=master https://github.com/dotnet/wcf.git wcf
   - git clone -q --branch=master https://github.com/Visual-Studio-China/core-docs.git coredocs
-  - git clone -q --branch=master https://github.com/docascode/coredocs-ci.git coredocs-ci
+  - git clone -q --branch=appveyor https://github.com/docascode/coredocs-ci.git coredocs-ci
   - git clone -q --branch=master https://github.com/docascode/intellisense.git intellisense
   - xcopy /ey coredocs-ci\** .\
 
