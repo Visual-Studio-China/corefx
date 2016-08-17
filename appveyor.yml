@@ -1,4 +1,5 @@
 clone_folder: c:\projects\nothing
+clone_depth: 1
 
 environment:
   access_token:
@@ -13,12 +14,12 @@ before_build:
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "vscopbld@microsoft.com"
   - git config --global user.name "OpenPublishBuild"
-  - git clone -q --branch=master https://github.com/dotnet/corefx.git corefx
-  - git clone -q --branch=master https://github.com/dotnet/coreclr.git  coreclr
-  - git clone -q --branch=master https://github.com/dotnet/wcf.git wcf
-  - git clone -q --branch=master https://github.com/Visual-Studio-China/core-docs.git coredocs
-  - git clone -q --branch=appveyor https://github.com/docascode/coredocs-ci.git coredocs-ci
-  - git clone -q --branch=master https://github.com/docascode/intellisense.git intellisense
+  - git clone -q --depth=1 --branch=master https://github.com/dotnet/corefx.git corefx
+  - git clone -q --depth=1 --branch=master https://github.com/dotnet/coreclr.git  coreclr
+  - git clone -q --depth=1 --branch=master https://github.com/dotnet/wcf.git wcf
+  - git clone -q --depth=1 --branch=master https://github.com/Visual-Studio-China/core-docs.git coredocs
+  - git clone -q --depth=1 --branch=appveyor https://github.com/docascode/coredocs-ci.git coredocs-ci
+  - git clone -q --depth=1 --branch=master https://github.com/docascode/intellisense.git intellisense
   - xcopy /ey coredocs-ci\** .\
 
 build_script:
